@@ -1,4 +1,4 @@
-# Projeto-de-MPS
+# Projeto-MPS
 Projeto da disciplina Método e Projeto de Software
 
 Grupo: Joseildo Maraiano Filho, 
