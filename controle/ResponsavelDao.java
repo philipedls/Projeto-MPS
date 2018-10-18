@@ -1,12 +1,11 @@
 package controle;
 
 import entidades.Usuario;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ResponsavelDao {
 
-
-    public ArrayList<Usuario> getAll() {
-        return new ArrayList<Usuario>();
+    public HashSet<Usuario> getAll() {
+        return new HashSet<Usuario>();
     }
 }

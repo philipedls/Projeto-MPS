@@ -1,12 +1,12 @@
 package controle;
 
 import entidades.Usuario;
-import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class Autenticacao {
 
-    private ArrayList<Usuario> usuarios;
+    private HashSet<Usuario> usuarios;
 
     private AlunoDao alunoDao;
     private DiretorDao diretorDao;
@@ -14,7 +14,7 @@ public class Autenticacao {
     private ResponsavelDao responsavelDao;
 
     public Autenticacao() {
-        this.usuarios = new ArrayList<Usuario>();
+        this.usuarios = new HashSet<Usuario>();
 
         this.usuarios.addAll(this.alunoDao.getAll());
         this.usuarios.addAll(this.diretorDao.getAll());
