@@ -1,6 +1,6 @@
 package entidades;
 
-class Diretor {
+public class Diretor {
 
     private String nome, telefone;
     private Endereco endereco;
