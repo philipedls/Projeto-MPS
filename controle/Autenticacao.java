@@ -22,6 +22,7 @@ public class Autenticacao {
         this.usuarios.addAll(this.professorDao.getAll());
         this.usuarios.addAll(this.responsavelDao.getAll());
 
+        this.loginFacebook = new LoginFacebook();
     }
 
     public void login(String login, String senha) {
@@ -36,7 +37,7 @@ public class Autenticacao {
     }
 
     public void loginViaFacebook(String code){
-        loginFacebook.obterUsuarioFacebook(code);
+        this.loginFacebook.obterUsuarioFacebook(code);
         System.out.print("LOGIN FEITO!");
     }
 
