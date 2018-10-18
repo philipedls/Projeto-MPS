@@ -27,9 +27,9 @@ public class Autenticacao implements InterfaceAutenticacaoDao {
 
         this.loginFacebook = new LoginFacebook();
     }
+
     @Override
     public void login(String login, String senha) {
-
         for (Usuario usuario : usuarios) {
             if (login == usuario.getLogin() && senha == usuario.getSenha()) {
                 System.out.print("LOGIN FEITO!");
@@ -37,12 +37,6 @@ public class Autenticacao implements InterfaceAutenticacaoDao {
                 System.out.print("Login ou senha incorretos");
             }
         }
-    }
-
-
-    public void loginViaFacebook(String code){
-        this.loginFacebook.obterUsuarioFacebook(code);
-        System.out.print("LOGIN FEITO!");
     }
 
 }
