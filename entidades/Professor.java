@@ -51,4 +51,8 @@ public class Professor {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    public Usuario getUsuario() { return this.usuario; }
+
+    public void setUsuatio(Usuario usuario) { this.usuario = usuario; }
 }

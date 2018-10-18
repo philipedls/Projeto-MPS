@@ -63,7 +63,7 @@ public class Aluno {
     }
 
     public Map<String, Responsavel> getResponsaveis() {
-        return responsaveis;
+        return this.responsaveis;
     }
 
     public void setResponsaveis(Map<String, Responsavel> responsaveis) {
@@ -71,18 +71,21 @@ public class Aluno {
     }
 
     public Map<String, Historico> getHistorico() {
-        return historico;
+        return this.historico;
     }
 
     public void setHistorico(Map<String, Historico> historico) {
         this.historico = historico;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+    public Endereco getEndereco() { return this.endereco; }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    public Usuario getUsuario() { return this.usuario; }
+
+    public void setUsuatio(Usuario usuario) { this.usuario = usuario; }
 }
+

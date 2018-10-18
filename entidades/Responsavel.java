@@ -2,6 +2,7 @@ package entidades;
 
 public class Responsavel {
     private String nome, telefone, email;
+    private Usuario usuario;
 
     public String getNome() {
         return nome;
@@ -34,5 +35,10 @@ public class Responsavel {
         this.nome = "";
         this.telefone = "";
         this.email = "";
+        this.usuario = new Usuario();
     }
+
+    public Usuario getUsuario() { return this.usuario; }
+
+    public void setUsuatio(Usuario usuario) { this.usuario = usuario; }
 }
