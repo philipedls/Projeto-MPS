@@ -7,6 +7,7 @@ import java.util.HashSet;
 public class Autenticacao {
 
     private HashSet<Usuario> usuarios;
+    private LoginFacebook loginFacebook;
 
     private AlunoDao alunoDao;
     private DiretorDao diretorDao;
@@ -33,4 +34,10 @@ public class Autenticacao {
             }
         }
     }
+
+    public void loginViaFacebook(String code){
+        loginFacebook.obterUsuarioFacebook(code);
+        System.out.print("LOGIN FEITO!");
+    }
+
 }
