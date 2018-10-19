@@ -4,12 +4,15 @@ import entidades.Usuario;
 import interfaces.InterfaceAutenticacaoDao;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 public class Autenticacao implements InterfaceAutenticacaoDao {
 
-    private HashSet<Usuario> usuarios;
+    private Map<String, Usuario> usuarios;
     private LoginFacebook loginFacebook;
 
     private AlunoDao alunoDao;
@@ -18,25 +21,26 @@ public class Autenticacao implements InterfaceAutenticacaoDao {
     private ResponsavelDao responsavelDao;
 
     public Autenticacao() {
-        this.usuarios = new HashSet<Usuario>();
+        this.usuarios = new HashMap<String, Usuario>();
 
-        this.usuarios.addAll(this.alunoDao.getAll());
-        this.usuarios.addAll(this.diretorDao.getAll());
-        this.usuarios.addAll(this.professorDao.getAll());
-        this.usuarios.addAll(this.responsavelDao.getAll());
+        this.usuarios.putAll(this.alunoDao.getAll());
+        this.usuarios.putAll(this.diretorDao.getAll());
+        this.usuarios.putAll(this.professorDao.getAll());
+        this.usuarios.putAll(this.responsavelDao.getAll());
 
         this.loginFacebook = new LoginFacebook();
     }
     @Override
     public void login(String login, String senha) {
 
-        for (Usuario usuario : usuarios) {
-            if (login == usuario.getLogin() && senha == usuario.getSenha()) {
+        Set<String> chaves = usuarios.keySet();
+
+        for (String chave : chaves)
+            if (login == usuarios.get(chave).getLogin() && senha == usuarios.get(chave).getSenha()) {
                 System.out.print("LOGIN FEITO!");
             } else {
                 System.out.print("Login ou senha incorretos");
             }
-        }
     }
 
 
