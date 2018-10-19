@@ -1,10 +1,13 @@
 package controle;
 
 import entidades.Usuario;
+import interfaces.InterfaceAutenticacaoDao;
+
+import java.io.Serializable;
 import java.util.HashSet;
 
 
-public class Autenticacao {
+public class Autenticacao implements InterfaceAutenticacaoDao {
 
     private HashSet<Usuario> usuarios;
 
@@ -22,7 +25,7 @@ public class Autenticacao {
         this.usuarios.addAll(this.responsavelDao.getAll());
 
     }
-
+    @Override
     public void login(String login, String senha) {
 
         for (Usuario usuario : usuarios) {
@@ -33,4 +36,5 @@ public class Autenticacao {
             }
         }
     }
+
 }
