@@ -10,6 +10,7 @@ import java.util.HashSet;
 public class Autenticacao implements InterfaceAutenticacaoDao {
 
     private HashSet<Usuario> usuarios;
+    private LoginFacebook loginFacebook;
 
     private AlunoDao alunoDao;
     private DiretorDao diretorDao;
@@ -24,6 +25,7 @@ public class Autenticacao implements InterfaceAutenticacaoDao {
         this.usuarios.addAll(this.professorDao.getAll());
         this.usuarios.addAll(this.responsavelDao.getAll());
 
+        this.loginFacebook = new LoginFacebook();
     }
     @Override
     public void login(String login, String senha) {
@@ -35,6 +37,12 @@ public class Autenticacao implements InterfaceAutenticacaoDao {
                 System.out.print("Login ou senha incorretos");
             }
         }
+    }
+
+
+    public void loginViaFacebook(String code){
+        this.loginFacebook.obterUsuarioFacebook(code);
+        System.out.print("LOGIN FEITO!");
     }
 
 }
