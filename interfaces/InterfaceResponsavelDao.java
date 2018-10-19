@@ -1,9 +1,8 @@
 package interfaces;
 
 import entidades.Usuario;
-
-import java.util.HashSet;
+import java.util.Map;
 
 public interface InterfaceResponsavelDao {
-    public HashSet<Usuario> getAll();
+    public Map<String, Usuario> getAll();
 }
