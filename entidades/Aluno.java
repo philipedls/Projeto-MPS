@@ -1,11 +1,13 @@
 package entidades;
 
+import controle.Memento;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Aluno {
-    private String matricula, nome;
+    private String matricula;
     private Date dataNascimento;
     private Map<String, Responsavel> responsaveis;
     private Map<String, Historico> historico;
@@ -14,12 +16,28 @@ public class Aluno {
 
     public Aluno() {
         this.matricula = "";
-        this.nome = "";
         this.dataNascimento = new Date(0,0,0);
         this.responsaveis = new HashMap<>();
         this.historico = new HashMap<>();
         this.endereco = new Endereco();
         this.usuario = new Usuario();
+    }
+
+    private void setAluno(Aluno aluno ) {
+        this.matricula = aluno.matricula;
+        this.dataNascimento = aluno.dataNascimento;
+        this.responsaveis = aluno.responsaveis;
+        this.historico = aluno.historico;
+        this.endereco = aluno.endereco;
+        this.usuario = aluno.usuario;
+    }
+
+    public Memento salvaMemento() {
+        return new Memento(this);
+    }
+
+    public void carregarMemento(Memento memento) {
+        this.setAluno((Aluno) memento.getEstado());
     }
 
     public String getMatricula() {
