@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Aluno {
     private String matricula;
+    private boolean bloqueado;
     private Date dataNascimento;
     private Map<String, Responsavel> responsaveis;
     private Map<String, Historico> historico;
@@ -16,6 +17,7 @@ public class Aluno {
 
     public Aluno() {
         this.matricula = "";
+        bloqueado = false;
         this.dataNascimento = new Date(0,0,0);
         this.responsaveis = new HashMap<>();
         this.historico = new HashMap<>();
@@ -105,5 +107,13 @@ public class Aluno {
     public Usuario getUsuario() { return this.usuario; }
 
     public void setUsuatio(Usuario usuario) { this.usuario = usuario; }
+
+    public boolean isBloqueado() {
+        return bloqueado;
+    }
+
+    public void setBloqueado(boolean bloqueado) {
+        this.bloqueado = bloqueado;
+    }
 }
 

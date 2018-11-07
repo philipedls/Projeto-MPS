@@ -9,6 +9,7 @@ import java.util.Map;
 public class Fachada implements InterfaceFachada {
     private Map<String, Comando> cmds;
     private List<Aluno> alunos;
+    private List<Turma> turmas;
 
 
     public Fachada() {
@@ -38,23 +39,47 @@ public class Fachada implements InterfaceFachada {
     }
 
     @Override
-    public void excluirMatricula(String matricula) {
+    public void excluirMatricula(String matricula) throws Exception {
+        for (Aluno l : alunos){
+            if (l.getMatricula().equalsIgnoreCase(matricula) && !l.isBloqueado()){
+                l.setBloqueado(true);
+                return;
+            }
+        }
+
+        throw  new Exception("Aluno ja esta bloqueado ou nao foi localizado!");
+    }
+
+    @Override
+    public void editarMatricula(String matricula) throws Exception{
+       for (Aluno l : alunos){
+           if (l.getMatricula().equalsIgnoreCase(matricula));
+               //Operaçao de Ediçao de Matricula
+       }
+
+       throw new Exception("Aluno nao localizado!");
 
     }
 
     @Override
-    public void editarMatricula(String matricula) {
+    public String verificarMatricula(String matricula){
+        for (Aluno l : alunos){
+            if (l.getMatricula().equalsIgnoreCase(matricula)){
+                return l.toString();
+            }
 
+        }
+        return "Aluno nao matriculado!";
     }
 
     @Override
-    public Aluno verificarMatricula(String matricula) {
-        return null;
-    }
-
-    @Override
-    public List<String> verificarNotas(String matricula) {
-        return null;
+    public Map<String, Historico> verificarNotas(String matricula) throws Exception{
+        for (Aluno l : alunos){
+            if (l.toString().equalsIgnoreCase(matricula)){
+                return l.getHistorico();
+            }
+        }
+        throw new Exception("Aluno nao localizado!");
     }
 
     @Override
@@ -63,52 +88,47 @@ public class Fachada implements InterfaceFachada {
     }
 
     @Override
-    public void cadastrarTurma(String nomeDaTurma, List<Professor> professores) {
+    public void cadastrarTurma(String nomeDaTurma, Map<String, Professor> professores) throws Exception {
+        for (Turma t : turmas){
+            if (t.getNome().equalsIgnoreCase(nomeDaTurma)){
+                throw new Exception("Turma ja Cadastrada!");
 
+            }
+        }
+
+        Turma turma = new Turma();
+        turma.setProfessores(professores);
+        turmas.add(turma);
     }
 
     @Override
-    public void excluirTurma(String nomeDaTurma) {
+    public void excluirTurma(String nomeDaTurma) throws Exception{
+        for (Turma t : turmas){
+            if (t.getNome().equalsIgnoreCase(nomeDaTurma))
+                turmas.remove(t);
+                return;
+        }
 
+        throw new Exception("Turma nao localizada!");
     }
 
     @Override
     public void editarTurma(Turma turma) {
+        for (Turma t : turmas){
+            if (t.getNome().equalsIgnoreCase(turma.getNome()));
+            //Operaçoes de Ediçoes em uma Turma
+        }
 
     }
 
     @Override
-    public Turma consultarTurma(String nomeDaTurma) {
-        return null;
+    public Turma consultarTurma(String nomeDaTurma) throws Exception{
+        for (Turma t : turmas){
+            if (t.getNome().equalsIgnoreCase(nomeDaTurma)){
+                return t;
+            }
+        }
+        throw new Exception("Turma nao localizada!");
     }
 
-    @Override
-    public void gerarRelatorioDaTurma(Turma turma) {
-
-    }
-
-    @Override
-    public void criarEscola(String nomeDaEscola, String endereco) {
-
-    }
-
-    @Override
-    public boolean notificarResponsaveis(Endereco nomeDoResponsavel) {
-        return false;
-    }
-
-    @Override
-    public void cadastrarProfessor(String nome, String matricula, Endereco endereco) {
-
-    }
-
-    @Override
-    public void alteracaoDeAlunosEntreTurmas(Aluno aluno, Turma turma, String justificativa) {
-
-    }
-
-    @Override
-    public void alteracaoDeProfessoresEntreTurmas(Professor professor, Turma turma, String justificativa) {
-
-    }
 }
