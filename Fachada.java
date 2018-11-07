@@ -9,6 +9,7 @@ import java.util.Map;
 public class Fachada implements InterfaceFachada {
     private Map<String, Comando> cmds;
     private List<Aluno> alunos;
+    private List<Professor> professores;
 
 
     public Fachada() {
@@ -100,6 +101,12 @@ public class Fachada implements InterfaceFachada {
 
     @Override
     public void cadastrarProfessor(String nome, String matricula, Endereco endereco) {
+        for (Professor l: professores){
+            if (l.getMatricula().equalsIgnoreCase(professor.getMatricula()))
+                throw new Exception("Error, Professor ja cadastrado!");
+        }
+
+        professores.add(professor);
 
     }
 
