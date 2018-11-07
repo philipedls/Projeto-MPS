@@ -19,6 +19,7 @@ public class Fachada implements InterfaceFachada {
     private void initComandos() {
         this.cmds.put("AdicionaAluno", new AdicionaAlunoComando());
         this.cmds.put("AdicionaProfessor", new AdicionarProfessorComando());
+        this.cmds.put("AdicionaResponsavel", new AdicionarResponsavelComando());
     }
 
     @Override
