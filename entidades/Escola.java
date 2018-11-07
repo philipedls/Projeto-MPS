@@ -5,13 +5,11 @@ import java.util.Map;
 
 public class Escola {
     private String nome;
-    private Escola escola;
     private Endereco endereco;
     private Map<String, Turma> mapTurmas;
 
     public Escola() {
         this.nome = "";
-        this.escola = new Escola();
         this.endereco = new Endereco();
         this.mapTurmas = new HashMap<>();
     }
@@ -24,13 +22,6 @@ public class Escola {
         this.nome = nome;
     }
 
-    public Escola getEscola() {
-        return escola;
-    }
-
-    public void setEscola(Escola escola) {
-        this.escola = escola;
-    }
 
     public Endereco getEndereco() {
         return endereco;

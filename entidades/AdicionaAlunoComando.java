@@ -11,6 +11,10 @@ public class AdicionaAlunoComando implements Comando {
         this.ad = ad;
     }
 
+    public AdicionaAlunoComando() {
+
+    }
+
     @Override
     public Object executar(Object arg) {
         this.ad.add((Aluno) arg);

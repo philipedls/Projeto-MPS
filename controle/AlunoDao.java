@@ -1,5 +1,6 @@
 package controle;
 
+import entidades.Aluno;
 import entidades.Usuario;
 import interfaces.InterfaceAlunoDao;
 
@@ -10,5 +11,10 @@ public class AlunoDao implements InterfaceAlunoDao {
     @Override
     public Map<String, Usuario> getAll() {
         return new HashMap<>();
+    }
+
+    @Override
+    public Object add(Aluno arg) {
+        return null;
     }
 }
