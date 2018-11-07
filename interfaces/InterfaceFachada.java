@@ -17,5 +17,6 @@ public interface InterfaceFachada {
     public void excluirTurma(String nomeDaTurma) throws Exception;
     public void editarTurma(Turma turma);
     public Turma consultarTurma(String nomeDaTurma) throws Exception;
+    public void cadastrarProfessor(String nome, String matricula, Endereco endereco) throws Exception;
 
 }

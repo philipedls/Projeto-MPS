@@ -9,6 +9,7 @@ import java.util.Map;
 public class Fachada implements InterfaceFachada {
     private Map<String, Comando> cmds;
     private List<Aluno> alunos;
+    private List<Professor> professores;
     private List<Turma> turmas;
 
 
@@ -20,6 +21,7 @@ public class Fachada implements InterfaceFachada {
     private void initComandos() {
         this.cmds.put("AdicionaAluno", new AdicionaAlunoComando());
         this.cmds.put("AdicionaProfessor", new AdicionarProfessorComando());
+        this.cmds.put("AdicionaResponsavel", new AdicionarResponsavelComando());
     }
 
     @Override
@@ -113,11 +115,15 @@ public class Fachada implements InterfaceFachada {
     }
 
     @Override
+
     public void editarTurma(Turma turma) {
         for (Turma t : turmas){
             if (t.getNome().equalsIgnoreCase(turma.getNome()));
             //Operaçoes de Ediçoes em uma Turma
         }
+
+
+
 
     }
 
@@ -129,6 +135,20 @@ public class Fachada implements InterfaceFachada {
             }
         }
         throw new Exception("Turma nao localizada!");
+    }
+
+    @Override
+    public void cadastrarProfessor(String nome, String matricula, Endereco endereco) throws Exception {
+        for (Professor p: professores){
+            if (p.getMatricula().equalsIgnoreCase(nome))
+                throw new Exception("Error, Professor ja cadastrado!");
+        }
+
+        Professor professor = new Professor();
+        professor.setNome(nome);
+        professor.setMatricula(matricula);
+        professor.setEndereco(endereco);
+        professores.add(professor);
     }
 
 }
